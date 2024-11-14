@@ -14,7 +14,6 @@ public class TestBase {
         Configuration.baseUrl = "https://market.yandex.ru/";
         Configuration.pageLoadStrategy = "eager";
         Configuration.holdBrowserOpen = false;
-        Configuration.timeout = 5000;
     }
 
     @AfterEach

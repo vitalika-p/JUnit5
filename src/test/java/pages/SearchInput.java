@@ -28,8 +28,8 @@ public class SearchInput {
         return this;
     }
 
-    public SearchInput checkProductByBrand(String brand) {
-        resultList.shouldHave(text(brand));
+    public SearchInput checkProductByBrand(String brandName) {
+        resultList.shouldHave(text(brandName));
 
         return this;
     }

@@ -11,14 +11,16 @@ import pages.SearchInput;
 public class YaMarketFindItemTests extends TestBase {
 
         @ValueSource(strings = {
-                "ноутбук", "смартфон андроид", "gsktcjc бош"
+                "ноутбук", "смартфон", "yfeiybrb"
         })
         @ParameterizedTest(name = "Для поискового запроса {0} должен отдавать не пустой список")
         @Tag("BLOCKER")
         void searchResultTest(String searchQuery) {
+                String brandName = "Apple";
                 SearchInput
                         .openMainPage()
-                        .searchSomething(searchQuery);
+                        .searchSomething(searchQuery)
+                        .checkProductByBrand(brandName);
         }
 
         @CsvSource(value = {
@@ -34,12 +36,12 @@ public class YaMarketFindItemTests extends TestBase {
                         .checkProductByGender(expectedGender);
         }
 
-        @CsvFileSource(resources = "/test_data/searchResult.csv", numLinesToSkip = 1)
+        @CsvFileSource(resources = "/test-data/searchResult.csv", numLinesToSkip = 1)
         @ParameterizedTest(name = "Для поискового запроса {0} в результате поиска должен быть бренд {1}")
-        void searchResultBrandFromCsvTest(String searchQuery, String expectedBrand) {
+        void searchResultBrandFromCsvTest(String searchQuery, String expectedBrandName) {
                 SearchInput
                         .openMainPage()
                         .searchSomething(searchQuery)
-                        .checkProductByBrand(expectedBrand);
+                        .checkProductByBrand(expectedBrandName);
         }
 }
